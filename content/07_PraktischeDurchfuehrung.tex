@@ -1,1 +1,27 @@
 \section{Praktische Durchführung}\label{sec:praktischeDurchfuehrung}
+Im folgenden Kapitel wird das bereits vorgestelle Metasploit
+Framework genutzt um einen beispielhaften Trojaner zu erstellen.
+
+\subsection{Aufbau}\label{sec:praktischeDurchfuehrung-aufbau}
+Für einen möglichst einfachen und gleichzeitig verhältnismäßig sicheren Ablauf
+wird das Labor in einer virtualisierten Umgebung ohne Verbindung zum Internet durchgeführt.
+Beispielsweise VirtualBox bietet hierfür eine \glqq Internal Networking\grqq{} Einstellung, unter welcher lediglich die virtuellen Maschinen untereinander kommunizieren können.
+Ist beispielsweise der Angreifer ein realer Computer und dient gleichzeitig dem Opfer als Host, so kann durch ein \glqq Host-ony networking\grqq{} sichergestellt werden, dass zumindest der Gast keinen Zugriff zum Internet hat.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}[,>={Stealth[round]},shorten >=1pt,auto,semithick]
+		\tikzstyle{pc}=[rectangle,draw=black,minimum size=30pt,inner sep=5pt,align=center]
+
+		\node[pc]      (A) at (1,0)  {Angreifer \\ (Kali Linux, Metasploit)};
+		\node[pc]      (V) at (5,0)  {Opfer\\(Windows 10)};
+
+		\path (A) edge (V) ;
+	\end{tikzpicture}
+	\caption{Übersicht} \label{fig:uebersicht}
+\end{figure}
+
+An der praktischen Durchführung sind, wie in Abbildung \ref{fig:uebersicht} dargestellt, zwei Computer beteiligt.
+Auf dem Angreifer läuft das Betriebssystem \glqq Kali Linux\grqq{}, welches bereits das Metasploit Framework enthält.
+Außerdem wird der späteren Trojaner über einen Apache Webserver an das Opfer zu übergeben.
+Das Opfer nutzt das weit verbreitete Betriebssystem Windows 10.
