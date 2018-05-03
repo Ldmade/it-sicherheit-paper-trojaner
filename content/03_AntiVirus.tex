@@ -1,7 +1,16 @@
 \section{Antivirus Software}\label{sec:antivirus}
 Zum Schutz vor Trojaner und Viren hilft Antiviren Software. Eine Antiviren Software hat hauptsächlich zwei Funktionen.
 \begin{itemize}
-\item Erkennen und Identifizieren von Malware
-\item Malare entfernen oder auf Quarantäne setzen
+    \item Erkennen und Identifizieren von Malware
+    \item Malware entfernen oder auf Quarantäne setzen
 \end{itemize}
-(Vgl.\cite{ANTNET})
+Bevor ein Antivirus Malware entfernen kann, muss die Software diese vorher entdecken. Dabei haben sich im laufe der Zeit mehrere Techniken entwickelt. Grundsätzlich kann man diese in zwei Arten unterteilen.
+\begin{itemize}
+    \item Siganturbasierte Erkennung
+    \item Heuristischen Erkennung
+\end{itemize}
+(Vgl.\cite{ANTNE1})\\
+Die Signaturbasierte Erkennung, scannt Datein auf dem zu schützenden Computer ab, und bilded von diesen und teilen von diesen Signaturen. Diese erzeugten Signaturen werden mit einer Datenbank bekannter Malwaresignaturen abgeglichen.\\
+Die Betreiber von Antiviren Software müssen aus diese Grund diese Datenbanken regelmäßig aktualisieren. Auch kann man dies richtige Signatur einer Malware durch verschlüsselung verschleiern. Aus diese Grund werden weitere Algorithmen angwandt, die die verschlüsselten Formen, wieder auf einfache Formen zurückwandeln.(Vgl.\cite{ANTNE2})
+Die Signaturbasierte Erkennung, kann meist nur bereits bekannte Malware aufdecken, da von neuer Malware die Signatur noch nicht bekannt ist. Deshalb wird neben dieser Erkennung auch die Heuristischen Verfahren genutzt. 
+Die Heuristische Erkennung analysiert das Verhalten einer Software. Dabei wird das Verhalten wieder mit einer Datenbank abgeglichen. Ist das Verhalten ähnlich zu einer Malware, wird der Zugriff der Software blockiert.\cite{ANTNE3}
