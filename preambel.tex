@@ -1,0 +1,51 @@
+% Basic packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,ngerman]{babel,varioref}
+\usepackage[backend=biber, isbn=false, doi=false, style=ieee]{biblatex}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{multirow}
+
+% Graphics and Includes
+\usepackage[pdftex]{graphicx}
+\graphicspath{{img/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
+% Useful tools
+\usepackage[autostyle=true,german=quotes]{csquotes}
+\usepackage{url}
+\usepackage{acro}
+\usepackage{blindtext}
+%\usepackage[section]{placeins} % Prevent figures and tables to float to new section
+
+% Additional Setup
+\definecolor{darkblue}{RGB}{0,0,168}
+\usepackage[unicode=true,hypertexnames=false,colorlinks=true,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkblue,pdftex]{hyperref}
+
+% Font
+\usepackage[official]{eurosym}
+\usepackage{enumitem}
+\usepackage[locale=DE]{siunitx} % SI Units für Währungen
+\DeclareSIUnit{\EUR}{\text{\euro}} % Beispielverwendung: \SI{10.10}{\EUR}
+
+% Bibliography
+\addbibresource{bibliography.bib}
+%\nocite{*}
+
+% Trennung von URLs im Literaturverzeichnis (große Werte [> 10000] verhindern die Trennung)
+\defcounter{biburlnumpenalty}{10} % Strafe für Trennung in URL nach Zahl
+\defcounter{biburlucpenalty}{500}  % Strafe für Trennung in URL nach Großbuchstaben
+\defcounter{biburllcpenalty}{500}  % Strafe für Trennung in URL nach Kleinbuchstaben
+\interfootnotelinepenalty=10000 % prevent all footnotes from breaking over a page.
+
+% Configs
+\acsetup{list-style = tabular, list-heading = section*} % Styling of acronym list
+\pdfminorversion=7
+\setcounter{tocdepth}{1} % Limit table of contents to subsection
+\sisetup{detect-weight=true, detect-family=true} % SI Units shall detect font weight and family
+\setlist[description]{style=nextline} % Break definitions of terms to a new line (used by \begin{description} \item[foo] bar \end{description})
+\renewcommand*{\bibfont}{\small}
