@@ -16,19 +16,7 @@
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,bending,automata,shapes}
-
-%% UML Diagram
 \usepackage[underline=true,rounded corners=false]{pgf-umlsd}
-% new an instance thread
-% Example:
-% \newthread[edge distance]{var}{thread name}
-\newcommand{\distthread}[3][0.2]{
-  \newinst[#1]{#2}{#3}
-  \stepcounter{threadnum}
-  \node[below of=inst\theinstnum,node distance=0.8cm] (thread\thethreadnum) {};
-  \tikzstyle{threadcolor\thethreadnum}=[fill=gray!30]
-  \tikzstyle{instcolor#2}=[fill=gray!30]
-}   
 
 % Useful tools
 \usepackage[autostyle=true,german=quotes]{csquotes}

@@ -12,10 +12,10 @@ Beispielsweise VirtualBox bietet hierfür eine \glqq Internal Networking\grqq{} 
 	\begin{tikzpicture}[,>={Stealth[round]},shorten >=1pt,auto,semithick]
 		\tikzstyle{pc}=[rectangle,draw=black,minimum size=30pt,inner sep=5pt,align=center]
 
-		\node[pc]      (A) at (1,2)  {Angreifer \\ (Kali Linux, Metasploit)};
-		\node[pc]      (V1) at (5,4)  {Opfer 1\\(Windows 10, Veraltet)};
-		\node[pc]      (V2) at (5,2)  {Opfer 2\\(Windows 10, Avira)};
-		\node[pc]      (V3) at (5,0)  {Opfer 3\\(Windows 10, Aktuell)};
+		\node[pc] (A) at (1,2)  {\underline{Angreifer} \\ (Kali Linux, Metasploit)};
+		\node[pc] (V1) at (5,4)  {\underline{Opfer 1}\\(Windows 10, Veraltet)};
+		\node[pc] (V2) at (5,2)  {\underline{Opfer 2}\\(Windows 10, Avira)};
+		\node[pc] (V3) at (5,0)  {\underline{Opfer 3}\\(Windows 10, Aktuell)};
 
 		\path (A) edge (V1) ;
 		\path (A) edge (V2) ;
@@ -37,7 +37,6 @@ Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden U
 \end{itemize}
 
 \subsection{Ablauf}\label{sec:praktischeDurchfuehrung-ablauf}
-
 \begin{figure}[h!]
 	\centering
 	\begin{sequencediagram}
@@ -73,7 +72,7 @@ Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden U
 \textbf{1. Erstellen des Trojaners: } 
 Zunächst wird auf dem Angreifer der Trojaner erstellt.
 Ziel ist es den Payload \code{windows/meterpreter/reverse\_tcp} in ein normales Programm (hier das bekannte \code{putty.exe}) einzuschleusen. 
-Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}. Wobei folgende parameter gesetzt werden:
+Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}, wksobei folgende Parameter gesetzt werden:
 \begin{itemize}
 	\item \textbf{Payload}: \\\code{-p windows/meterpreter/reverse\_tcp}
 	      \begin{itemize}
