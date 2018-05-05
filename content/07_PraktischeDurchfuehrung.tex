@@ -69,10 +69,10 @@ Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden U
 	\caption{Ablauf} \label{fig:Ablauf}
 \end{figure}
 
-\textbf{1. Erstellen des Trojaners: } 
+\textbf{1. Erstellen des Trojaners: } \hfill \\
 Zunächst wird auf dem Angreifer der Trojaner erstellt.
 Ziel ist es den Payload \code{windows/meterpreter/reverse\_tcp} in ein normales Programm (hier das bekannte \code{putty.exe}) einzuschleusen. 
-Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}, wksobei folgende Parameter gesetzt werden:
+Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}, wobei folgende Parameter gesetzt werden:
 \begin{itemize}
 	\item \textbf{Payload}: \\\code{-p windows/meterpreter/reverse\_tcp}
 	      \begin{itemize}
@@ -89,18 +89,19 @@ Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}, wksobei folgende Pa
 
 \bigskip
 \textbf{2. Aktivieren des Listeners: } \hfill \\
-Für den Metasploit-Baukasten gibt es das Hilfsprogramm Armitage, dass die Möglichkeit bietet alle Einstellungen über eine grafische Oberfläche vorzunehmen.
-In Armitage wird der Listener über \code{exploit/multi/handler} gestartet. Hierfür muss dieser mit \code{Payload, Ip, Port} aus Schritt 1 konfiguriert werden.
+Zur Aktivierung des Listeners wird die grafische Oberfläche Armitage verwendet.
+Der Listener wird über \code{exploit/multi/handler} gestartet.
+Hierfür muss dieser mit dem Payload (inkl. IP-Adresse und Port) aus Schritt 1 konfiguriert werden.
 
-
-\textbf{3. Verbreiten und Ausführen des Trojaners: } \hfill \\
+\bigskip
+\textbf{3. Verbreiten und Ausführen des Trojaners: }\hfill \\
 Der erstellte Trojaner wird in das Wurzelverzeichnis des Webservers \code{/var/www/html} kopiert um diesen einfach, und gleichzeitig verhältnismäßig realitätsnah an die Opfer zu übermitteln.
 In der Praxis könnte zum verbreiten des Trojaners zum Beispiel DNS-Spoofing verwendet werden, um dem Opfer den Trojaner statt dem eigentlichen Programm zu übergeben.
 Führt das Opfer das Programm mit dem Trojaner aus, so baut dieser eine Verbindung zum Angreifer auf. 
 
-
+\bigskip
 \textbf{4. Attackieren des Opfer-Systems: } \hfill \\
-Der Angreifer kann nun mithilfe von Armitage Zugriff auf diverse Systemfunktionalität wie Beispielsweise:
+Der Angreifer kann nun mithilfe von Armitage und meterpreter Zugriff auf diverse Systemfunktionalität wie Beispielsweise:
 \begin{itemize}
 	\item Interaktion (interaction)
 		\begin{itemize}
@@ -138,14 +139,11 @@ Der Trojaner stellt die Verbindung vom Opfer-System zum Angreifer her.
 
 \subsection{Ergebnisse}\label{sec:praktischeDurchfuehrung-ergebnisse}
 
-\textbf{Bewertung des Baukastens} 
-	\begin{itemize}
-		\item leichte Bedienung
-		\item kein Fachwissen notwendig
-		\item zahlreiche Möglichkeiten durch modulares System
-	\end{itemize}
+\textbf{Bewertung des Baukastens: }\hfill \\
+Der Baukasten ist leicht zu Bedienen und durch ergiebige Dokumentation ist kein Fachwissen notwendig.
+Außerdem bietet er dank dem modularen Aufbau zahlreiche Möglichkeiten um Trojaner oder andere Schadsoftware für verschiedene Systeme zu erzeugen.
 
-\textbf{Bewertung des Trojaners}
+\textbf{Bewertung des Trojaners: }\hfill \\
 Die Trojaner ist sehr einfach zu Erzeugen und Anzuwenden. 
 Dieser Trojaner ist jedoch durch einfache Schutzmechanismen bereits zu erkennen.
 Im Versuch zeigte sich, dass sowohl die aktualisierte Windows-Version sowie der Avira-Schutz den Trojaner rechtzeitig erkennen konnten.
