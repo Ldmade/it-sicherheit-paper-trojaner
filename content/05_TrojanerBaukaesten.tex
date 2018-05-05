@@ -1,19 +1,35 @@
 \section{Trojaner Baukästen}\label{sec:trojanerBaukaesten}
-Um einen Trojaner zu entwickeln braucht man Kenntnisse über Betriebssysteme, Netzwerke und Programmiersprachen.
-Das heißt um Geld durch einen Trojaner zu verdienen, benötigt man erheblichen Aufwand.\\
-Aus diesem Grund werden sogenannte Trojaner Baukästen im Internet angeboten. Somit können Kriminelle mit wenig Computerwissen, Schaden anrichten und sich bereichern. Dabei sind die Trojaner Baukasten oftmals leicht zu bedienen und haben viele nützliche Funktionen. Auch lässt sich innerhalb weniger Minuten ein Trojaner erstellen und konfigurieren. Wie einfach es geht, zeigt Beispielsweise das Youtube Tutorial in \cite{YOUTUBE}, welches die Anwendung von DarkComet zeigt.\\
-Grundsätzlich bietet ein Trojanen Baukasten an, einen Trojaner zu erstellen und als Listener zu fungieren. Der Listener wartet so lange, bis der Trojaner sich meldet und erlaubt dem Angreifer Funktionen auszuführen. Die möglichen Funktionen lassen sich bei der Erstellung konfigurieren.\\
-Folgend sind einige Funktionen und Konfigurationsmöglichkeiten beschrieben.\cite{PANDA}
+Um einen Trojaner zu entwickeln sind Kenntnisse über Betriebssysteme, Netzwerke und Programmiersprachen notwendig.
+Dies bedeutet einen sehr hohen Aufwand um einen lauffähigen, stabilen und gewinnbringenden Trojaner zu erstellen.\\
+Aus diesem Grund werden \code{Trojaner Baukästen} im Internet angeboten, die diesen Aufwand verhindern. 
+Kriminelle mit wenig Computerwissen können mithilfe der Baukästen Schaden anrichten ohne viel Zeit zu investieren.
+Dabei ist es wichtig dass Trojaner Baukasten möglichst leicht zu bedienen sind und dennoch viele nützliche Funktionen anbieten. 
+Wie einfach es ist mithilfe eines Trojaner Baukastens einen Trojaner zu erstellen, zeigt Beispielsweise das Youtube Tutorial in \cite{YOUTUBE}.
+Der in diesem Tutorial verwendete Baukasten heißt \enquote{DarkComet}\\
+% evtl ein bisschen Info über DarkComet
+Trojaner Baukästen bieten nicht oft nicht nur das Konfigurieren von Trojanern an, sondern
+begleiten einen Angreifer den gesamten Weg bis zum Ziel. 
+Die Baukästen stellen einen Listener bereit, der auf die Aktionen des Trojaners reagiert und Informationen an den
+Angreifer-Rechner zurücksendet. Dies können beispielsweise Passwörter, Tastatureingaben, Screenshots und Kameraaufnahmen sein aber auch Zugriff auf verschiedene
+Systemteile oder das Gesamtsystem. Hat der Listener des Trojaners einmal den Zugriff auf das Opfer-System können beliebige Aktionen ausgeführt werden.
+Die Folgende Liste beschreibt einige dieser Funktionen und Konfigurationsmöglichkeiten.\cite{PANDA}
 \begin{description}
-\item[Return mode] Wie soll der Trojaner mit dem Angreifer kommunizieren und die gestohlenen Daten übertragen? Hier kann man Beispielsweise zwischen HTTPS, SMTP, oder das einfache Abspeichern auf dem Computer des Opfers entscheiden.
-\item[Passwörter] Welche Arten von Passwörter sollen gestohlen werden? Hier stellt man ein, nach welchen Passwörtern gesucht werden soll. Zum Beispiel können die Browserpasswörter ermittelt werden.
-\item[Keylogger] Mit dieser Funktion kann der Trojaner die Tastatureingaben mitschneiden. Dadurch können Passwörter ermittelt werden.
-\item[Run Methode] Durch die Run Methode kann man entscheiden ob der Trojaner in den Autostart gesetzt werden soll. Man kann auch entscheiden ob er als Service oder normales Programm ausgeführt werden soll.
-\item[Backdoor] Durch diese Funktion öffnet der Trojaner Ports, mit denem man sich auf dem Opfer anmelden kann.
-\item[Kill] Hier kann man den Trojaner anweisen, spezielle Services zu deaktivieren. Hier bieten viele Baukästen auch eine Liste von bekannten Services von Antiviren Programme an.
-\item[Screenshots] Dadurch könne Screenshots gemacht werden.
-\item[Wurm] Hier kann man dem Trojaner sogar Eigenschaften eines Wurms geben. Dadurch ist er in der Lage sich selbst zu verbreiten.
+\item[Return mode] Mithilfe des Return Modes kann angegeben werden, wie der Trojaner mit dem Angreifer kommunizieren und die gestohlenen Daten übertragen soll. 
+        Hier kann Beispielsweise zwischen HTTPS, SMTP, oder das einfache Abspeichern auf dem Computer des Opfers entschieden werden.
+\item[Passwörter] Diese Funktion wird verwendet um spezielle Passwörter zu stehlen. Es wird angegeben, welche Art von Passwort benötigt wird. Dies können zum Beispiel können Browserpasswörter sein, damit der Angreifer Zugriff auf Social Media Plattformen erlangt.
+\item[Keylogger] Mit dieser Funktion kann der Trojaner die Tastatureingaben mitschneiden. Dies ist eine Möglichkeit Passwörter zu ermittelt.
+\item[Run Methode] Durch die Run Methode kann festgelegt werden, ob der Trojaner bereits beim Systemstart ausgeführt werden soll. Es kann zusätzlich konfiguriert werden, ob der Trojaner als Service oder normales Programm ausgeführt werden soll.
+\item[Backdoor] Durch diese Funktion öffnet der Trojaner Ports, mit denen der Trojaner mit dem Listener kommunizieren kann.
+\item[Kill] Mit der Kill Funktion kann der Trojaner einzelner Service auf dem Opfer-System beenden. Viele Baukästen bieten eine Liste von bekannten Services von Antiviren Programme an.
+\item[Screenshots] Mit der Screenshot Funktion können Bildschirmaufnahmen auf dem Opfer-System erstellt werden.
+\item[Wurm] Diese Funktion wird verwendet, wenn der Trojaner die eigenschaften eines Wurms haben soll. Das heißt, dass er in der Lage ist, sich selbstständig zu verbreiten.
 \end{description}
-Nach der Konfiguration kann der Trojaner kompiliert und erzeugt werden. Ein Trojaner Baukasten bietet meist zusätzlich die Möglichkeit die .exe Datei umzuwandeln um diese für den User zu verschleiern, zum Beispiel mit einem angegeben Icon oder einer falschen Endung (z.B. .mp3). Auch werden Funktionen angeboten um den Trojaner so zu verändern, damit das Signaturbasierte Verfahren von Antiviren Software keinen Erfolg hat.\\
-Der einzige Nachteil eines Baukasten ist, das er nur eine bestimmte Art von Trojaner erzeugen kann. Dieser ist zwar unterschiedlich konfiguriert, ist jedoch immer Ähnlich. Aus diesem Grund können Antiviren Softwarehersteller, durch analysieren des Baukasten die eigene Erkennung verbessern und somit die Gefahr einen bestimmten Baukasten minimieren. Wurde ein Baukaste auf diese Weise analyisiert, ist er für Kriminelle weniger Wert. Auch die beschriebene Funktion, die Trojaner zu verändern, damit die Signaturbasierte Erkennung fehlschlägt kann von den Antiviren Herstellern analysiert und somit unschädlich gemacht werden\cite{FOCUS}.
+Nach der Konfiguration kann der Trojaner kompiliert und erzeugt werden. 
+Ein Trojaner Baukasten bietet zusätzlich die Möglichkeit die .exe Datei umzuwandeln, um diese für den User zu verschleiern. 
+Das heißt zum Beispiel die .exe mit einem anderen Icon oder einer anderen Endung (z.B. .mp3) anzuzeigen. 
+Weitere zusätzliche Funktionen können das umgehen der signaturbasierten Verfahren von Antiviren Software zu umgehen.\\
+Der einzige Nachteil eines Baukasten ist, das nur sehr primitive Trojaner erzeugt werden können. 
+Der primitive Trojaner ist zwar unterschiedlich konfiguriert, nutzt allerdings immer ähnliche Verfahren. 
+Aus diesem Grund können Antiviren Softwarehersteller, durch analysieren des Baukasten die eigene Erkennung verbessern und somit die Gefahr von Trojanern eines bestimmten Baukasten minimieren. 
+Auch das umgehen der signaturbasierten Erkennung, kann von den Antiviren Herstellern analysiert und somit unschädlich gemacht werden\cite{FOCUS}.
 % Sub7, MPack, Pinch 3, Power Grabber, Bifrost, DarkComet
