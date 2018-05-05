@@ -8,34 +8,29 @@ Trojaner werden anhand ihrer Art voneinander abgegrenzt. Die Art spiegelt das Zi
     \item \textbf{Downloader}: Lädt versteckte Software herunter (von SPAM bis hin zu Spy-Programmen)
     \item \textbf{Spy}: Spioniert den Rechner aus um Benutzerdaten, Screenshots, Tastatureingaben, Festplatteninhalte etc. zu erhalten.
 \end{itemize}
-Die verschiedenen Arten von Trojanern werden oftmals kombiniert. So können daraus mächtige Trojaner werden. 
+Die verschiedenen Arten von Trojanern werden oftmals kombiniert. So können daraus mächtige Werkzeuge werden. 
 Die 3 bekanntesten Trojaner, die außerdem als Grundlage für viele weitere Trojaner dienten, werden im Folgenden kurz vorgestellt. 
+
 \subsection{Zbot-Trojaner}
-\begin{itemize}
-    \item Trojaner der Zeus Bot-Familie
-    \item einer der ersten Trojaner die als Rahmenwerk verkauft wurden
-    \item Rahmenwerk = Malware mit Konfigurations-Tool zur Individualisierung
-    \item Stiehlt durch z.B. Protokollierung der Tastatureingaben Zugangsdaten von Email-Konten, Sozialen Netzwerken, Online-Banking usw.
-    \item Hauptziel: Durch Erpressung oder gestohlene Zugangsdaten Feld vom Anwender erlangen.
-\end{itemize}
+Der Zbot-Trojaner ist ein Trojaner der Zeus Bot-Familie. Er war einer der ersten
+Trojaner die als Rahmenwerk verkauft wurde, das heißt als Malware mit einem Konfigurations-
+Tool zur Individualisierung. Ziel des Zbot-Trojaners ist es möglichst viele Informationen
+des Benutzers zu stehlen um im Anschluss durch Erpressung vom Anwender Geld zu 
+erzielen. Die Informationen werden beispielsweise durch Protokollierung der Tastatureingaben erlangt. 
+Es könnte sich hier zum Beispiel um Anmeldedaten von E-Mail-Konten, Sozialen Netzwerken oder Online-Banking
+handeln.
 Der Zeus-Trojaner ist von Anti-Virusprogrammen sehr schwer zu entdecken, da dieser 'stealth techniques' verwendet. 
 Typischerweise versteckt sich der Trojaner im Speicher. Dazu wird der original Speicher kopiert. Anfragen von anderen Programmen werden auf die Kopie weitergeleitet.
 So kann der Trojaner unbemerkt den Speicher verändern.
+Eine Abwandlung eines Zeus-Trojaners ist zum Beispiel der \textbf{Reveton-Trojaner}.
+Dieser setzt den klassischen Ransomware Ansatz (Verschlüsselung der Opfer-Daten) um und ist bekannter unter dem Namen 'BKA-Trojaner'.
+Ziel ist es den Zugriff auf das System zu blockieren und Lösegeld für die Freigabe
+zu fordern. Der Reveton-Trojaner verwendet offizielle Logos um gegenüber der Opfer 
+seriös zu wirken.
 
 \subsection{Vundo-Trojaner}
-\begin{itemize}
-    \item Werbung für gefährliche und gefälschte Antivirus-Programmen
-    \item deaktiviert Firewalls, Antiviren-Programme, Windows Updates etc.
-    \item Installiert meist eine Kombination aus 'Browser Helper Object' und 'DLL'
-    \item Ziel ist es Werbung im Browser anzuzeigen und Drive-By-Downloads zu starten 
-\end{itemize}
-\subsection{Reveton-Trojaner}
-\begin{itemize}
-    \item Ransomware
-    \item basiert auf dem Zeus-Trojaner
-    \item als BKA-Trojaner bekanntesten
-    \item Zugang zum Computer wird blockiert
-    \item Opfer soll über anonyme Prepaid-Systeme Lösegeld bezahlen
-    \item es werden offizielle Logos verwendet um seriös zu wirken
-\end{itemize}
+Der Vundo-Trojaner verfolgt das Ziel Werbung für gefährliche bzw. gefälschte Antivirus-
+Programme anzuzeigen und so Drive-By-Downloads zu starten. Der Trojaner installiert
+meist eine Kombination aus 'Browser Helper Objects' und 'DLLs'. Um unerkannt zu bleiben
+deaktiviert er außerdem Firewalls, Antiviren-Programme, Windows Updates, etc. 
 \cite{BEKTRO}
