@@ -1,15 +1,29 @@
-\section{Antivirus Software}\label{sec:antivirus}
-Zum Schutz vor Trojaner und Viren helfen Antiviren Programme. Diese haben hauptsächlich zwei Funktionen.
+\section{Antivirus-Software}\label{sec:antivirus}
+Zum Schutz vor Trojaner und Viren hilft Antivirus-Software.
+Hauptaufgabe dieser Software ist es Malaware zu entfernen oder in Quarantäne zu verschieben.
+Bevor die Malware entfernen werden kann, muss die Software diese entdecken.
+Dabei haben sich im Laufe der Zeit mehrere Techniken entwickelt, die man grundsätzlich 
+in zwei Arten unterteilen kann.\cite{ANTNE1}
 \begin{itemize}
-    \item Erkennen und Identifizieren von Malware
-    \item Malware entfernen oder auf Quarantäne setzen
-\end{itemize}
-Bevor ein Antivirus Malware entfernen kann, muss die Software diese vorher entdecken. Dabei haben sich im laufe der Zeit mehrere Techniken entwickelt. Grundsätzlich kann man diese in zwei Arten unterteilen.\cite{ANTNE1}
-\begin{itemize}
-    \item Siganturbasierte Erkennung
+    \item Signaturbasierte Erkennung
     \item Heuristischen Erkennung
 \end{itemize}
-Die Signaturbasierte Erkennung, scannt Datein auf dem zu schützenden Computer ab, und bilded von diesen Signaturen. Diese erzeugten Signaturen werden mit einer Datenbank bekannter Malwaresignaturen abgeglichen.\\
-Da immer mehr Viren und Trojaner erzeugt werden, müssen Betreiber von Antiviren Software diese Datenbanken regelmäßig aktualisieren. Auch kann man diese richtige Signatur einer Malware durch Verschlüsselung verschleiern. Aus diese Grund werden weitere Algorithmen angewandt, die die verschlüsselten Formen, wieder auf einfache Formen zurückwandeln. Durch diese Transformationen kann man viele Trojaner bereits durch wenige Signaturen erkennen\cite{ANTNE2}.
-Die Signaturbasierte Erkennung, kann meist nur bereits bekannte Malware aufdecken, da von neuer Malware die Signatur noch nicht bekannt ist. Deshalb wird neben dieser Erkennung auch heuristischen Verfahren genutzt. 
-Die Heuristische Erkennung analysiert das Verhalten einer Software. Dabei wird das Verhalten wieder mit einer Datenbank abgeglichen. Ist das Verhalten ähnlich zu einer Malware, wird der Zugriff der Software blockiert. Dabei gibt es wieder unterschiedliche Ansätze. Zum einen kann der normale Betrieb einer Software analysiert werden, oder das Antiviren Programm kann in einer isolierten Umgebung die Software ausführen und feststellen, ob es sich um Malware handelt. Letzteres ist jedoch aufwändig, da eine virtuelle Umgebung geschaffen werden muss \cite{ANTNE3}.
+Die \textbf{signaturbasierte Erkennung} scannt Dateien auf dem zu schützenden Computer 
+und bildet deren Signaturen. 
+Diese Signaturen werden mit einer Datenbank bekannter Malwaresignaturen abgeglichen.
+Um auch neuere Viren und Trojaner zu erkennen müssen Anbieter von Antiviren Software diese Datenbanken regelmäßig aktualisieren.
+Die signaturbasierte Erkennung kann erschwert werden, indem die eigentliche Signatur der Malware durch Verschlüsselung verschleiert wird.
+Aus diesem Grund werden weitere Algorithmen angewandt, welche die verschlüsselten Formen wieder auf einfache Formen zurückwandeln.
+Durch diese Transformationen kann man viele Trojaner bereits durch wenige Signaturen erkennen \cite{ANTNE2}.
+
+Der Schwachpunkt der signaturbasierten Erkennung ist, dass meist nur bereits bekannte Malware aufgedeckt werden kann,
+da von neuer Malware die Signatur noch nicht bekannt ist.
+Deshalb wird zusätzlich auch die \textbf{heuristische Erkennung} genutzt. 
+Diese analysiert das Verhalten einer Software und gleicht es mit einer Datenbank ab.
+Ist das Verhalten ähnlich zu einer Malware, wird die Software als Malware erkannt und beispielsweise der Zugriff der Software blockiert.
+Für die heuristische Erkennung gibt es unterschiedliche Ansätze
+Einerseits kann der normale Betrieb einer Software analysiert werden,
+oder andererseits die Software in einer isolierten Umgebung ausgeführt werden um festzustellen,
+ob es sich um Malware handelt. 
+Letzteres ist jedoch aufwändig, da eine virtuelle Umgebung geschaffen werden muss \cite{ANTNE3}.
+
