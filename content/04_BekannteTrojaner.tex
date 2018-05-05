@@ -1,35 +1,34 @@
-\section{Bekannte Trojaner}\label{sec:bekannteTrojaner}
-Trojaner werden anhand ihrer Art voneinander abgegrenzt. Die Art spiegelt das Ziel wieder, das ein Trojaner verfolgt. 
+\section{Trojaner}\label{sec:trojaner}
+Trojaner werden anhand ihrer Art unterschieden.
+Diese spiegelt das Ziel wieder, welches ein Trojaner verfolgt.
+Hierzu zählen zum Beispiel:
 \begin{itemize}
-    \item  \textbf{Backdoor}: Öffnet eine Hintertür um einen Computer oder ganzes Netzwerk von außen zu steuern bzw. zu administrieren
-    \item \textbf{Clicker}: Bringt ein Opfer dazu, bestimmte Webseiten (Werbung oder kostenpflichtig) aufzurufen 
-    \item \textbf{Dropper}: Installiert weitere schädliche Software und versteckt diese
-    \item \textbf{Linker}: Verbindet ein schädliches Programm mit einem vom Nutzer gewünschten Programm. Ziel ist es, das schädliche Programm im gewünschten Programm zu verstecken.
+    \item \textbf{Backdoor}: Öffnet eine Hintertür um einen Computer oder ein ganzes Netzwerk von außen zu steuern bzw. zu administrieren
+    \item \textbf{Clicker}: Bringt ein Opfer dazu, bestimmte Webseiten (z.B. Werbung) aufzurufen 
+    \item \textbf{Dropper}: Installiert weitere (ggf. schädliche) Software und versteckt diese
+    \item \textbf{Linker}: Verbindet ein schädliches Programm mit einem vom Nutzer gewünschten Programm. Ziel ist es, das schädliche Programm im gewünschten Programm zu verstecken
     \item \textbf{Downloader}: Lädt versteckte Software herunter (von SPAM bis hin zu Spy-Programmen)
-    \item \textbf{Spy}: Spioniert den Rechner aus um Benutzerdaten, Screenshots, Tastatureingaben, Festplatteninhalte etc. zu erhalten.
+    \item \textbf{Spy}: Spioniert den Rechner aus um Benutzerdaten, Screenshots, Tastatureingaben, Festplatteninhalte etc. zu erhalten
 \end{itemize}
-Die verschiedenen Arten von Trojanern werden oftmals kombiniert. So können daraus mächtige Werkzeuge werden. 
-Die 3 bekanntesten Trojaner, die außerdem als Grundlage für viele weitere Trojaner dienten, werden im Folgenden kurz vorgestellt. 
+Die verschiedenen Arten von Trojanern werden oftmals kombiniert um so mächtige Werkzeuge zu erschaffen. 
+Im Folgenden werden die drei bekanntesten Trojaner vorgestellt, welche außerdem als Grundlage für viele weiteren Trojaner dienen. 
 
-\subsection{Zbot-Trojaner}
-Der Zbot-Trojaner ist ein Trojaner der Zeus Bot-Familie. Er war einer der ersten
-Trojaner die als Rahmenwerk verkauft wurde, das heißt als Malware mit einem Konfigurations-
-Tool zur Individualisierung. Ziel des Zbot-Trojaners ist es möglichst viele Informationen
-des Benutzers zu stehlen um im Anschluss durch Erpressung vom Anwender Geld zu 
-erzielen. Die Informationen werden beispielsweise durch Protokollierung der Tastatureingaben erlangt. 
-Es könnte sich hier zum Beispiel um Anmeldedaten von E-Mail-Konten, Sozialen Netzwerken oder Online-Banking
-handeln.
-Der Zeus-Trojaner ist von Anti-Virusprogrammen sehr schwer zu entdecken, da dieser 'stealth techniques' verwendet. 
-Typischerweise versteckt sich der Trojaner im Speicher. Dazu wird der original Speicher kopiert. Anfragen von anderen Programmen werden auf die Kopie weitergeleitet.
+Der \textbf{Zbot-Trojaner} ist ein Trojaner der \textit{Zeus}-Familie. Er war einer der ersten
+Trojaner die als Framework mit einem Konfigurations-Tool zur Individualisierung verkauft wurde.
+Ziel des Zbot-Trojaners ist es möglichst viele Informationen wie Zugangsadaten des Benutzers zu E-Mail-Konten, sozialen Netzwerken oder Online-Banking zu stehlen
+um im Anschluss durch Erpressung vom Anwender Geld zu erlangen.
+Die Informationen werden beispielsweise durch Protokollierung der Tastatureingaben gewonnen. 
+Durch die Verwendung von \textit{stealth techniques} ist der Trojaner von Antiviren-Software sehr schwer zu erkennen.
+Typischerweise versteckt er sich im Speicher indem der Originalspeicher kopiert wird und Anfragen von anderen Programmen
+an diese weitergeleitet werden.
 So kann der Trojaner unbemerkt den Speicher verändern.
-Eine Abwandlung eines Zeus-Trojaners ist zum Beispiel der \textbf{Reveton-Trojaner}.
-Dieser setzt den klassischen Ransomware Ansatz (Verschlüsselung der Opfer-Daten) um und ist bekannter unter dem Namen 'BKA-Trojaner'.
-Ziel ist es den Zugriff auf das System zu blockieren und Lösegeld für die Freigabe
-zu fordern. Der Reveton-Trojaner verwendet offizielle Logos um gegenüber der Opfer 
-seriös zu wirken.
 
-\subsection{Vundo-Trojaner}
-Der Vundo-Trojaner verfolgt das Ziel Werbung für gefährliche bzw. gefälschte Antivirus-
+Eine Abwandlung eines Zeus-Trojaners ist der \textbf{Reveton-Trojaner}.
+Dieser setzt den klassischen Ransomware Ansatz um mit dem Ziel den Zugriff auf das System zu blockieren und Lösegeld für die Freigabe zu fordern.
+In Deutschland ist er bekannter unter dem Namen \enquote{BKA-Trojaner}.
+Der Reveton-Trojaner verwendet offizielle Logos um gegenüber der Opfer seriös zu wirken.
+
+Der \textbf{Vundo-Trojaner} verfolgt das Ziel Werbung für gefährliche bzw. gefälschte Antivirus-
 Programme anzuzeigen und so Drive-By-Downloads zu starten. Der Trojaner installiert
 meist eine Kombination aus 'Browser Helper Objects' und 'DLLs'. Um unerkannt zu bleiben
 deaktiviert er außerdem Firewalls, Antiviren-Programme, Windows Updates, etc. 
