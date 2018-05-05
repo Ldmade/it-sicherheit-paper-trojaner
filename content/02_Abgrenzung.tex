@@ -1,34 +1,42 @@
 \section{Begriffserklärung: Virus, Trojaner, Wurm}\label{sec:abgrenzung}
-Alle Schadprogramme können die gleichen Ziele verfolgen. Diese sind allgemein bezeichnet: 
-\begin{itemize}
-    \item Daten löschen
-    \item Daten blockieren
-    \item Daten modifizieren
-    \item Daten kopieren
-    \item System-/Netzwerkleistung einschränken
-\end{itemize} 
-Doch verschiedene Schadprogramme haben unterschiedliche Merkmale und werden anhand dieser in Arten eingeteilt. 
-Drei dieser Arten sind 'Virus', 'Wurm' und 'Trojaner'. Um diese von einander zu unterscheiden sind im folgenden die wesentlichen Merkmale dargestellt.
-\cite{KASTRO}
-\break
+Viren, Trojaner und Würmer sind verschiedene Umsetzungen von Schadsoftware,
+verfolgen allerdings ähnliche Ziele. Daten sind das wichtigste Gut der
+Informationstechnologie. Die meisten Schadprogramme zielen auf diese ab, sei es
+das Ziel die Daten zu löschen, zu blockieren, zu modifizieren oder zu kopieren.
+Hat ein Hacker Zugriff auf die Daten, so können weitere Aktionen folgen.
+Zum Beispiel kann Lösegeld für die Daten gefordert werden.
+Ein anderes Ziel einiger Schadprogramme ist es die System- und/oder Netzwerkleistung
+einzuschränken. Auch hier können darauf basierend weitere Schritte folgen.
+Doch was ist jetzt der Unterschied zwischen 'Viren', 'Würmern' und 'Trojanern'?
+Um diese Frage zu klären, werden im Folgenden die verschiedenen Merkmale dargestellt.
+\cite{KASTRO}\\
+
 \textbf{Was ist ein Virus?}
 \begin{itemize}
-    \item repliziert sich selbst
-    \item hängt an einem Wirtsprogramm
-    \item schläft oft, bis das Wirtsprogramm ausgeführt wird
-    \item verbreitet sich, in dem das Wirtsprogramm verbreitet wird
+    \item \textbf{Verbreitung: } 
+        \begin{itemize}
+            \item repliziert sich selbst
+            \item verbreitet sich, in dem das Wirtsprogramm verbreitet wird
+        \end{itemize}
+    \item \textbf{Funktionsweise: } 
+        \begin{itemize}
+            \item hängt an einem Wirtsprogramm
+            \item schläft bis das Wirtsprogramm ausgeführt wird
+        \end{itemize}
 \end{itemize}
+
+\textbf{Was ist ein Wurm?}
+\begin{itemize}
+    \item wie ein Virus repliziert sich ein Wurm selbst
+    \item benötigen nach 'infektion' eines Rechners kein Wirtsprogramm mehr
+    \item verbreiten sich sehr leicht und schnell
+    \item bedrohen so nicht nur einzelne Rechner, sondern ganze Netzwerke
+\end{itemize}
+
 \textbf{Was ist ein Trojaner?}
 \begin{itemize}
     \item versteckte Zusatzfunktionalität, die sich in 'nützlichem' Programm versteckt
     \item repliziert sich nicht selbstständig
     \item ruft das Opfer das 'nützliche' Programm auf, werEden schädliche Routinen ausgeführt
-\end{itemize}
-\textbf{Was ist ein Wurm?}
-\begin{itemize}
-    \item benötigen nach 'infektion' eines Rechners kein Wirtsprogramm mehr
-    \item verbreiten sich sehr leicht und schnell
-    \item wie ein Virus repliziert sich ein Wurm selbst
-    \item bedrohen so nicht nur einzelne Rechner, sondern ganze Netzwerke
 \end{itemize}
 \cite{ABGVT}
