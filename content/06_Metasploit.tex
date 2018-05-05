@@ -1,12 +1,12 @@
 \section{Metasploit-Framework \cite{MSPLH}}\label{sec:metasploit}
-Das Metasploit-Framework ist ein Teilprojekt des Open-Source-Projekts Metasploit.
+Das \textit{Metasploit-Framework} ist ein Teilprojekt des Open-Source-Projekts \textit{Metasploit}.
 Es bietet ein modulares Werkzeug um unter anderem Exploits für verschiedene Systeme auszuwählen,
 diese mit einem Payload zu versehen und auszuführen. Das Framework ist modular aufgebaut, sodass je nach Anwendungsfall ein Exploit mit verschiedenen Payloads kombiniert werden kann.
 
-Das Payload ist Code, welcher bei Erfolg des Exploits auf dem Zielrechner ausgeführt werden soll.
+Ein Payload ist Code, welcher bei Erfolg des Exploits auf dem Zielrechner ausgeführt werden soll.
 Dies kann das triviale Anzeigen von Nachrichten aber auch das Starten eines VNC-Servers sein.
 
-Für den im Rahmen dieses Projekts vorgestellten Trojaners wird das Payload Meterpreter \cite{OSMTP} verwendet.
+Für den im Rahmen dieses Projekts vorgestellten Trojaners wird das Payload \textit{Meterpreter} \cite{OSMTP} verwendet.
 Meterpreter führt einen Interpreter für diverse Kommandozeilenbefehle auf dem Zielrechner aus.
 Dies schließt aus dem Unix-Bereich bekannte Befehle wie beispielsweise \code{ls}, \code{cd}, \code{ps} und \code{cat},
 aber auch boshafte Befehle wie \code{migrate} (Migrieren, des Schadprogramms vom Trojaner auf einen anderen Prozess),

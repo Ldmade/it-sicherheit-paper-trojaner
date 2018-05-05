@@ -1,11 +1,11 @@
 \section{Praktische Durchführung}\label{sec:praktischeDurchfuehrung}
-Im folgenden Kapitel wird das bereits vorgestelle Metasploit
-Framework genutzt um einen beispielhaften Trojaner zu erstellen.
+Im folgenden Kapitel wird das bereits vorgestelle Metasploit-Framework genutzt
+um einen beispielhaften Trojaner zu erstellen.
 
 \subsection{Aufbau}\label{sec:praktischeDurchfuehrung-aufbau}
 Für einen möglichst einfachen und gleichzeitig verhältnismäßig sicheren Ablauf
 wird das Labor in einer virtualisierten Umgebung ohne Verbindung zum Internet durchgeführt.
-Beispielsweise VirtualBox bietet hierfür eine \glqq Internal Networking\grqq{} Einstellung, unter welcher lediglich die virtuellen Maschinen untereinander kommunizieren können.
+Beispielsweise VirtualBox bietet hierfür eine \enquote{Internal Networking} Einstellung, unter welcher lediglich die virtuellen Maschinen untereinander kommunizieren können.
 
 \begin{figure}[ht!]
 	\centering
@@ -26,7 +26,7 @@ Beispielsweise VirtualBox bietet hierfür eine \glqq Internal Networking\grqq{} 
 \end{figure}
 
 An der praktischen Durchführung sind, wie in Abbildung \ref{fig:uebersicht} dargestellt, vier Computer beteiligt.
-Auf dem Angreifer läuft das Betriebssystem \glqq Kali Linux\grqq{}, welches bereits das Metasploit Framework enthält.
+Auf dem Angreifer läuft das Betriebssystem \textit{Kali Linux}, welches bereits das Metasploit-Framework enthält.
 Außerdem wird der späteren Trojaner über einen Apache Webserver an das Opfer zu übergeben.
 Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden Unterschieden:
 
@@ -102,7 +102,7 @@ Führt das Opfer das Programm mit dem Trojaner aus, so baut dieser eine Verbindu
 
 \bigskip
 \textbf{4. Attackieren des Opfer-Systems: }
-Der Angreifer kann nun mithilfe von Armitage und meterpreter Zugriff auf diverse Systemfunktionalität wie Beispielsweise:
+Der Angreifer kann nun mithilfe von Armitage und Meterpreter Zugriff auf diverse Systemfunktionalität wie Beispielsweise:
 \begin{description}
 	\item[Interaktion (interaction)]
 		\begin{itemize}
@@ -128,7 +128,7 @@ Der Angreifer kann nun mithilfe von Armitage und meterpreter Zugriff auf diverse
 \end{description}
 
 \subsection{Funktionsweise des Trojaners}\label{sec:praktischeDurchfuehrung-funktionsweise}
-Der Trojaner kombiniert die Arten Backdoor und Linker indem er den Schadcode \textit{meterpreter} 
+Der Trojaner kombiniert die Arten Backdoor und Linker indem er den Schadcode \textit{Meterpreter} 
 in dem Programm \textit{putty} versteckt.
 Beim Ausführen stellt dieser eine Verbindung vom Zielsystem zum Angreifer her.
 
