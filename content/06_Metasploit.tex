@@ -1,10 +1,10 @@
 \section{Metasploit-Framework \cite{MSPLH}}\label{sec:metasploit}
 Das \textit{Metasploit-Framework} ist ein Teilprojekt des Open-Source-Projekts \textit{Metasploit}.
-Es bietet ein modulares Werkzeug um unter anderem Exploits für verschiedene Systeme auszuwählen,
+Es bietet ein modulares Werkzeug, um unter anderem Exploits für verschiedene Systeme auszuwählen,
 diese mit einem Payload zu versehen und auszuführen. Das Framework ist modular aufgebaut, sodass je nach Anwendungsfall ein Exploit mit verschiedenen Payloads kombiniert werden kann.
 
 Ein Payload ist Code, welcher bei Erfolg des Exploits auf dem Zielrechner ausgeführt werden soll.
-Dies kann das triviale Anzeigen von Nachrichten aber auch das Starten eines VNC-Servers sein.
+Dies kann das triviale Anzeigen von Nachrichten, aber auch das Starten eines VNC-Servers sein.
 
 Für den im Rahmen dieses Projekts vorgestellten Trojaners wird das Payload \textit{Meterpreter} \cite{OSMTP} verwendet.
 Meterpreter führt einen Interpreter für diverse Kommandozeilenbefehle auf dem Zielrechner aus.
@@ -18,5 +18,5 @@ Das Metasploit-Framework selbst bietet lediglich eine Kommandozeilen-Schnittstel
 Jedoch gibt es zur einfacheren Benutzung Hilfsprogramm wie Armitage,
 welches die Möglichkeit bietet das Konfigurieren und Anwenden der Exploits und Payloads über eine grafische Oberfläche vorzunehmen.
 
-Zusätzlich zur den bereits genannten Möglichkeiten bietet das Framework auch das Werkzeug \code{msfvenom} an um konfigurierte Payloads in ausführbare Programme zu verpacken.
+Zusätzlich zu den bereits genannten Möglichkeiten bietet das Framework auch das Werkzeug \code{msfvenom} an um konfigurierte Payloads in ausführbare Programme zu verpacken.
 Dies können entweder eigenständige Programme sein, oder aber die Payloads werden mit bereits bestehenden Programmen verschmolzen. 

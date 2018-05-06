@@ -1,5 +1,5 @@
 \section{Praktische Durchführung}\label{sec:praktischeDurchfuehrung}
-Im folgenden Kapitel wird das bereits vorgestelle Metasploit-Framework genutzt
+Im folgenden Kapitel wird das bereits vorgestellte Metasploit-Framework genutzt
 um einen beispielhaften Trojaner zu erstellen.
 
 \subsection{Aufbau}\label{sec:praktischeDurchfuehrung-aufbau}
@@ -12,9 +12,9 @@ Beispielsweise VirtualBox bietet hierfür eine \enquote{Internal Networking} Ein
 	\begin{tikzpicture}[,>={Stealth[round]},shorten >=1pt,auto,semithick]
 		\tikzstyle{pc}=[rectangle,draw=black,minimum size=30pt,inner sep=5pt,align=center]
 
-		\node[pc] (A) at (1,2)  {\underline{Angreifer} \\ (Kali Linux, Metasploit)};
-		\node[pc] (V1) at (5,4)  {\underline{Opfer 1}\\(Windows 10, Veraltet)};
-		\node[pc] (V2) at (5,2)  {\underline{Opfer 2}\\(Windows 10, Avira)};
+		\node[pc] (A) at (1,1.5)  {\underline{Angreifer} \\ (Kali Linux, Metasploit)};
+		\node[pc] (V1) at (5,3)  {\underline{Opfer 1}\\(Windows 10, Veraltet)};
+		\node[pc] (V2) at (5,1.5)  {\underline{Opfer 2}\\(Windows 10, Avira)};
 		\node[pc] (V3) at (5,0)  {\underline{Opfer 3}\\(Windows 10, Aktuell)};
 
 		\path (A) edge (V1) ;
@@ -27,7 +27,7 @@ Beispielsweise VirtualBox bietet hierfür eine \enquote{Internal Networking} Ein
 
 An der praktischen Durchführung sind, wie in Abbildung \ref{fig:uebersicht} dargestellt, vier Computer beteiligt.
 Auf dem Angreifer läuft das Betriebssystem \textit{Kali Linux}, welches bereits das Metasploit-Framework enthält.
-Außerdem wird der späteren Trojaner über einen Apache Webserver an das Opfer zu übergeben.
+Außerdem wird der späteren Trojaner über einen Apache Webserver an das Opfer übergeben.
 Die Opfer nutzen das weit verbreitete Betriebssystem Windows 10. Mit folgenden Unterschieden:
 
 \begin{description}
@@ -96,7 +96,7 @@ Hierfür muss dieser mit dem Payload (inkl. IP-Adresse und Port) aus Schritt 1 k
 
 \bigskip
 \textbf{3. Verbreiten und Ausführen des Trojaners: }
-Der erstellte Trojaner wird in das Wurzelverzeichnis des Webservers \code{/var/www/html} kopiert um diesen einfach, und gleichzeitig verhältnismäßig realitätsnah an die Opfer zu übermitteln.
+Der erstellte Trojaner wird in das Wurzelverzeichnis des Webservers \code{/var/www/html} kopiert, um diesen einfach, und gleichzeitig verhältnismäßig realitätsnah an die Opfer zu übermitteln.
 In der Praxis könnte zum verbreiten des Trojaners zum Beispiel DNS-Spoofing verwendet werden, um dem Opfer den Trojaner statt dem eigentlichen Programm zu übergeben.
 Führt das Opfer das Programm mit dem Trojaner aus, so baut dieser eine Verbindung zum Angreifer auf. 
 
@@ -128,12 +128,12 @@ Der Angreifer kann nun mithilfe von Armitage und Meterpreter Zugriff auf diverse
 \end{description}
 
 \subsection{Funktionsweise des Trojaners}\label{sec:praktischeDurchfuehrung-funktionsweise}
-Der Trojaner kombiniert die Arten Backdoor und Linker indem er den Schadcode \textit{Meterpreter} 
+Der Trojaner kombiniert die Arten Backdoor und Linker, indem er den Schadcode \textit{Meterpreter} 
 in dem Programm \textit{putty} versteckt.
 Beim Ausführen stellt dieser eine Verbindung vom Zielsystem zum Angreifer her.
 
 Hierbei wird einerseits ausgenutzt, dass das Betriebssystem bzw. die Antivirus-Software nicht ausreichend aktualisiert wurde.
-Andererseits könnte der Angriff durch wählen einer sicheren Download-Quelle (z.B. mittels https)
+Andererseits könnte der Angriff durch Wählen einer sicheren Download-Quelle (z.B. mittels https)
 oder einem Vergleich der Prüfsumme mit einer vertrauenswürdigen Quelle verhindert werden.
 
 \subsection{Ergebnisse}\label{sec:praktischeDurchfuehrung-ergebnisse}
@@ -141,8 +141,7 @@ oder einem Vergleich der Prüfsumme mit einer vertrauenswürdigen Quelle verhind
 Der Baukasten ist leicht zu Bedienen und durch ergiebige Dokumentation ist kein Fachwissen notwendig.
 Außerdem bietet er dank dem modularen Aufbau zahlreiche Möglichkeiten um Trojaner oder andere Schadsoftware für verschiedene Systeme zu erzeugen.
 
-Die Trojaner ist sehr einfach zu Erzeugen und Anzuwenden. 
-Dieser Trojaner ist jedoch durch einfache Schutzmechanismen bereits zu erkennen.
+Der erstellte Trojaner ist jedoch durch einfache Schutzmechanismen bereits zu erkennen.
 Im Versuch zeigte sich, dass sowohl die aktualisierte Windows-Version sowie der Avira-Schutz den Trojaner rechtzeitig erkennen konnten.
 Lediglich die veraltete Windows-Version konnte den Trojaner nicht erkennen. 
 
